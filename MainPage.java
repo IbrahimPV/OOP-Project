@@ -31,6 +31,8 @@ public class MainPage extends JFrame{
 		add(Admin);
 		add(User);
 		
+		ImageIcon logo = new ImageIcon("logo.jpeg");
+		setIconImage(logo.getImage());
 		
 		setSize(350, 580);
 		setVisible(true);
