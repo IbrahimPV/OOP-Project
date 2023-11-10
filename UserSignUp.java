@@ -1,4 +1,8 @@
 //The GUI for the user sign up page
-public abstract class UserSignUp {
+
+import javax.swing.*;
+
+public abstract class UserSignUp extends JFrame{
+    JLabel userNameLabel;
 
 }
