@@ -15,8 +15,8 @@ public class MainPage extends JFrame{
 	JButton Admin, User;
 	
 	public MainPage() {
-		
-		setLayout(new GridLayout(18,2));
+		super("COP28 APP");
+		setLayout(new GridLayout(9,1));
 		setSize(350, 580);
 		setVisible(true);
 		
