@@ -9,7 +9,7 @@ public class MainPage extends JFrame{
 	
 	
 	JLabel Title, d1;
-	JButton Admin, User, UserReg;
+	JButton Admin, User, userReg;
 	
 	public MainPage() {
 		super("COP28 APP");
@@ -19,7 +19,7 @@ public class MainPage extends JFrame{
 		Admin = new JButton("Admins login");
 		User = new JButton("Users login");
 		d1 = new JLabel("Are you a new User?", SwingConstants.CENTER); 
-		UserReg = new JButton("SignUp");
+		userReg = new JButton("SignUp");
 
 		
 		add(new JLabel());
@@ -31,7 +31,7 @@ public class MainPage extends JFrame{
 		add(Admin);
 		add(User);
 		add(d1);
-		add(UserReg);
+		add(userReg);
 
 		
 		ImageIcon logo = new ImageIcon("logo.jpeg");
@@ -44,6 +44,11 @@ public class MainPage extends JFrame{
 		toUser u1 = new toUser();
 		User.addActionListener(u1);
 
+		toSignUp s1 = new toSignUp();
+		userReg.addActionListener(s1);
+
+
+
 	}
 	class toUser implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
@@ -51,6 +56,11 @@ public class MainPage extends JFrame{
 			user myUser = new user();
 		}
 	}
-
+	class toSignUp implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			dispose();
+			UserSignUp mySignUp = new UserSignUp();
+		}
+	}
 
 }
