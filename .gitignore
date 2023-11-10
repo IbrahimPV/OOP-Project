@@ -2,3 +2,10 @@
 /initiator.class
 /user.class
 /volunteer.class
+/MainPage.class
+/AdminLogin.class
+/AdminMain.class
+/UserLogin.class
+/UserMain.class
+/PendingEvents.class
+/ActiveEvents.class
