@@ -1,17 +1,17 @@
 import javax.swing.*;
 
-public class user {
-    JFrame frame = new JFrame();
+public class user extends JFrame{
+    
     JLabel signUpLabel = new JLabel("SignUp");
     JButton signUp = new JButton("SignUp");
 
     public user() {
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(350, 580);
-        frame.setLayout(null);
-		frame.setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setSize(350, 580);
+        setLayout(null);
+		setVisible(true);
         signUp.setBounds(175,350,100,50);
-        frame.add(signUp);
+        add(signUp);
 
     }
     
