@@ -7,9 +7,6 @@ import java.awt.event.*;
 
 public class MainPage extends JFrame{
 	
-	public static void main(String [] args) {
-		new MainPage();
-	}
 	
 	JLabel Title;
 	JButton Admin, User;
@@ -38,7 +35,15 @@ public class MainPage extends JFrame{
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		
+		toUser u1 = new toUser();
+		User.addActionListener(u1);
 	}
+	class toUser implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			dispose();
+			user myUser = new user();
+		}
+	}
+
 
 }
