@@ -8,16 +8,19 @@ import java.awt.event.*;
 public class MainPage extends JFrame{
 	
 	
-	JLabel Title;
-	JButton Admin, User;
+	JLabel Title, d1;
+	JButton Admin, User, UserReg;
 	
 	public MainPage() {
 		super("COP28 APP");
-		setLayout(new GridLayout(9,1));
+		setLayout(new GridLayout(10,1));
 		
 		Title = new JLabel("Wlecome to COP28 App", SwingConstants.CENTER);
 		Admin = new JButton("Admins login");
 		User = new JButton("Users login");
+		d1 = new JLabel("Are you a new User?", SwingConstants.CENTER); 
+		UserReg = new JButton("SignUp");
+
 		
 		add(new JLabel());
 		add(new JLabel());
@@ -27,6 +30,9 @@ public class MainPage extends JFrame{
 		add(new JLabel());
 		add(Admin);
 		add(User);
+		add(d1);
+		add(UserReg);
+
 		
 		ImageIcon logo = new ImageIcon("logo.jpeg");
 		setIconImage(logo.getImage());
@@ -37,6 +43,7 @@ public class MainPage extends JFrame{
 
 		toUser u1 = new toUser();
 		User.addActionListener(u1);
+
 	}
 	class toUser implements ActionListener {
 		public void actionPerformed(ActionEvent e) {

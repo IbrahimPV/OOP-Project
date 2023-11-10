@@ -2,16 +2,16 @@ import javax.swing.*;
 
 public class user extends JFrame{
     
-    JLabel signUpLabel = new JLabel("SignUp");
-    JButton signUp = new JButton("SignUp");
+    JLabel LoginLabel = new JLabel("Log-in");
+    JButton Login = new JButton("Log-in");
 
     public user() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(350, 580);
         setLayout(null);
 		setVisible(true);
-        signUp.setBounds(175,350,100,50);
-        add(signUp);
+        Login.setBounds(175,350,100,50);
+        add(Login);
 
     }
     
