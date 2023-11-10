@@ -13,13 +13,15 @@ public class user extends JFrame{
 
 
     public user() {
-        setLayout(new GridLayout(10,4));
+        setLayout(new GridLayout(17,4));
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(350, 580);
 		setVisible(true);
         //Login.setBounds(175,350,100,50);
-        add(new JLabel("Users Login Page",SwingConstants.CENTER));
         add(new JLabel(" "));
+        add(new JLabel(" "));
+        add(new JLabel("Users Lo",SwingConstants.RIGHT));
+        add(new JLabel("gin Page",SwingConstants.LEFT));
         add(new JLabel(" "));
         add(new JLabel(" "));
         add(un);
