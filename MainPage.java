@@ -17,8 +17,25 @@ public class MainPage extends JFrame{
 	public MainPage() {
 		super("COP28 APP");
 		setLayout(new GridLayout(9,1));
+		
+		Title = new JLabel("Wlecome to COP28 App", SwingConstants.CENTER);
+		Admin = new JButton("Admins login");
+		User = new JButton("Users login");
+		
+		add(new JLabel());
+		add(new JLabel());
+		add(new JLabel());
+		add(Title);
+		add(new JLabel());
+		add(new JLabel());
+		add(Admin);
+		add(User);
+		
+		
 		setSize(350, 580);
 		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+
 		
 	}
 
