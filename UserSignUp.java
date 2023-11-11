@@ -6,6 +6,7 @@ import java.awt.*;
 public class UserSignUp extends JFrame{
 
     // Creating Variables
+    Container c;
     JButton backButton, signUpButton;
     JLabel titleLabel,nameLabel, DOBLabel, emailLabel, phoneNumberLabel, addressLabel, passwordLabel;
     JComboBox day, month, year;
@@ -24,12 +25,17 @@ public class UserSignUp extends JFrame{
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+
+        c = getContentPane();
+        c.setLayout(null);
+
+
         // Title Label
         titleLabel = new JLabel("User Sign Up");
         titleLabel.setSize(300,30);
         titleLabel.setLocation(200,100);
         titleLabel.setFont(new Font("Arial", Font.PLAIN, 30));
-        add(titleLabel);
+        c.add(titleLabel);
 
 
         // Name Label
@@ -37,13 +43,13 @@ public class UserSignUp extends JFrame{
         nameLabel.setFont(new Font("Arial",Font.PLAIN,20));
         nameLabel.setSize(100,80);
         nameLabel.setLocation(100,170);
-        add(nameLabel);
+        c.add(nameLabel);
 
         // Name TextField
         nameText = new JTextField();
         nameText.setSize(200,20);
         nameText.setLocation(250,200);
-        add(nameText);
+        c.add(nameText);
 
         
         // Password Label
@@ -51,13 +57,13 @@ public class UserSignUp extends JFrame{
         passwordLabel.setFont(new Font("Arial",Font.PLAIN,20));
         passwordLabel.setSize(100,80);
         passwordLabel.setLocation(100,220);
-        add(passwordLabel);
+        c.add(passwordLabel);
         
         // Password Text
         passwordText = new JTextField();
         passwordText.setSize(200,20);
         passwordText.setLocation(250,250);
-        add(passwordText);
+        c.add(passwordText);
 
         
         // Email Label
@@ -65,14 +71,14 @@ public class UserSignUp extends JFrame{
         emailLabel.setFont(new Font("Arial",Font.PLAIN,20));
         emailLabel.setSize(100,80);
         emailLabel.setLocation(100,270);
-        add(emailLabel);
+        c.add(emailLabel);
 
 
         // Email Text
         emailText = new JTextField();
         emailText.setSize(200,20);
         emailText.setLocation(250,300);
-        add(emailText);
+        c.add(emailText);
 
         
         // Phone No Label
@@ -80,38 +86,39 @@ public class UserSignUp extends JFrame{
         phoneNumberLabel.setFont(new Font("Arial",Font.PLAIN,20));
         phoneNumberLabel.setSize(100,80);
         phoneNumberLabel.setLocation(100,320);
-        add(phoneNumberLabel);
+        c.add(phoneNumberLabel);
 
 
         // Phone No Text
         phoneNumberText = new JTextField();
         phoneNumberText.setSize(200,20);
         phoneNumberText.setLocation(250,350);
-        add(phoneNumberText);
+        c.add(phoneNumberText);
 
-        
-        // Address Label
-        addressLabel = new JLabel("Address: ");
+        // Address No Label
+        addressLabel = new JLabel("Phone No: ");
         addressLabel.setFont(new Font("Arial",Font.PLAIN,20));
         addressLabel.setSize(100,80);
         addressLabel.setLocation(100,370);
-        //add(addressLabel);
+        c.add(addressLabel);
 
 
-        // Address Text
+        // Phone No Text
         addressText = new JTextField();
         addressText.setSize(200,20);
         addressText.setLocation(250,400);
-        add(addressText);
+        c.add(addressText);
+
+        
 
 
 
-        backButton = new JButton("Back");
+        //backButton = new JButton("Back");
         //add(backButton);
-        signUpButton = new JButton("Sign Up");
+        //signUpButton = new JButton("Sign Up");
         //add(signUpButton);
 
-        day = new JComboBox(days);
+        //day = new JComboBox(days);
         //day.setLocation(480,280);
     }
 
