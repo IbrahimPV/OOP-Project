@@ -2,12 +2,13 @@
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class UserSignUp extends JFrame{
 
     // Creating Variables
     Container c;
-    JButton backButton, signUpButton;
+    JButton backButton, submitButton;
     JLabel titleLabel,nameLabel, DOBLabel, emailLabel, phoneNumberLabel, addressLabel, passwordLabel;
     JComboBox day, month, year;
     JTextField nameText, DOBText, emailText, phoneNumberText, addressText, passwordText;
@@ -109,6 +110,7 @@ public class UserSignUp extends JFrame{
         addressText.setLocation(250,400);
         c.add(addressText);
 
+
         // Date Of Birth Label
         DOBLabel = new JLabel("Date Of Birth: ");
         DOBLabel.setFont(new Font("Arial",Font.PLAIN,16));
@@ -116,34 +118,61 @@ public class UserSignUp extends JFrame{
         DOBLabel.setLocation(100,420);
         c.add(DOBLabel);
 
+
+        // Day Scroll Box
         day = new JComboBox(days);
         day.setSize(50,30);
         day.setLocation(250,450);
         c.add(day);
 
+
+        // month Scroll Box
         month = new JComboBox(months);
         month.setSize(60,30);
         month.setLocation(300,450);
         c.add(month);
 
+
+        // Year Scroll Box
         year = new JComboBox(years);
         year.setSize(100,30);
         year.setLocation(360,450);
         c.add(year);
 
 
+    
 
-        
+        // Back Button
+        backButton = new JButton("Back");
+        backButton.setBounds(50, 650, 100, 50);
+        c.add(backButton);
+        backToMainPage b1 = new backToMainPage();
+        backButton.addActionListener(b1);
 
 
+        // Submit Button
+        submitButton = new JButton("Submit");
+        submitButton.setBounds(170,525,300,50);
+        c.add(submitButton);
+        submit s = new submit();
+        submitButton.addActionListener(s);
 
-        //backButton = new JButton("Back");
-        //add(backButton);
-        //signUpButton = new JButton("Sign Up");
-        //add(signUpButton);
 
-        //day = new JComboBox(days);
-        //day.setLocation(480,280);
+    }
+    class backToMainPage implements ActionListener{
+        public void actionPerformed(ActionEvent e) {
+            dispose();
+            MainPage back = new MainPage();
+            
+
+        }
+    }
+    class submit implements ActionListener{
+        public void actionPerformed(ActionEvent e) {
+            if((nameText.getText().isEmpty()) || (passwordText.getText().isEmpty()) || (emailText.getText().isEmpty()) || (phoneNumberText.getText().isEmpty()) || (addressText.getText().isEmpty())) {
+                JOptionPane.showMessageDialog(null, "Please Fill All The Boxes");
+            } else if ()
+        }
     }
 
 }
