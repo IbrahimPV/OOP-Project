@@ -7,6 +7,10 @@ import java.awt.event.*;
 
 public class MainPage extends JFrame{
 	
+	public static void main(String [] args) {
+		new MainPage();
+	}
+	
 	
 	JLabel Title, d1;
 	JButton Admin, User, userReg;
