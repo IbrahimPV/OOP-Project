@@ -10,3 +10,5 @@
 /PendingEvents.class
 /ActiveEvents.class
 /UserSignUp.class
+/MainPage$toSignUp.class
+/MainPage$toUser.class
