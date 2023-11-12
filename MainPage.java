@@ -45,7 +45,7 @@ public class MainPage extends JFrame{
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		toUser u1 = new toUser();
+		toUserLogin u1 = new toUserLogin();
 		User.addActionListener(u1);
 
 		toSignUp s1 = new toSignUp();
@@ -58,6 +58,12 @@ public class MainPage extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			dispose();
 			user myUser = new user();
+		}
+	}
+		class toUserLogin implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			dispose();
+			UserLogin myUserLogin = new UserLogin();
 		}
 	}
 	class toSignUp implements ActionListener {
