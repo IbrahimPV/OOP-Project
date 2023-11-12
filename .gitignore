@@ -12,3 +12,7 @@
 /UserSignUp.class
 /MainPage$toSignUp.class
 /MainPage$toUser.class
+/MainPage$toUserLogin.class
+/UserSignUp$backToMainPage.class
+/UserSignUp$submit.class
+/MainPage$toAdimLogin.class

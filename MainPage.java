@@ -50,6 +50,9 @@ public class MainPage extends JFrame{
 
 		toSignUp s1 = new toSignUp();
 		userReg.addActionListener(s1);
+		
+		toAdimLogin a1 = new toAdimLogin();
+		Admin.addActionListener(a1);
 
 
 
@@ -71,6 +74,14 @@ public class MainPage extends JFrame{
 			dispose();
 			UserSignUp mySignUp = new UserSignUp();
 		}
+	}
+	class toAdimLogin implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			dispose();
+			AdminLogin adminLogin = new AdminLogin();
+			
+		}
+		
 	}
 
 }
