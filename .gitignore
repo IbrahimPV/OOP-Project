@@ -25,3 +25,8 @@ UserSignUp$backToMainPage.class
 UserSignUp$submit.class
 MainPage$toUser.class
 UserSignUp$submit.class
+.vscode/settings.json
+*.class
+MainPage$toUser.class
+MainPage$toUserLogin.class
+UserSignUp$submit.class

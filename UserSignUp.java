@@ -171,10 +171,10 @@ public class UserSignUp extends JFrame{
         public void actionPerformed(ActionEvent e) {
             if((nameText.getText().isEmpty()) || (passwordText.getText().isEmpty()) || (emailText.getText().isEmpty()) || (phoneNumberText.getText().isEmpty()) || (addressText.getText().isEmpty())) {
                 JOptionPane.showMessageDialog(null, "Please Fill All The Boxes");
-            } else if (){ 
+            } else if (false){ 
                 
             } else {
-                user newUser = new user()
+                user newUser = new user(nameText.getText(),passwordText.getText(),emailText.getText(),phoneNumberText.getText(),addressText.getText(),(String)day.getSelectedItem(),(String)month.getSelectedItem(), (String)year.getSelectedItem());
             }
         }
     }

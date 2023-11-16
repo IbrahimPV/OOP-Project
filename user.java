@@ -5,8 +5,7 @@ import java.awt.event.*;
 public class user {
     private String name, password, email, phoneNumber, day, month, year, address, ID;
 
-    public user(String name, String password, String email, String phoneNumber, String day, String month, String year,
-            String address) {
+    public user(String name, String password, String email, String phoneNumber, String address, String day, String month, String year) {
         this.name = name;
         this.password = password;
         this.email = email;
@@ -81,7 +80,7 @@ public class user {
         this.address = address;
     }
     public String IDGenerator() {
-        return Double.toString(Math.floor(Math.random()));
+        return "#" + Integer.toString((int)Math.floor(Math.random()*1000000));
 
     }
     

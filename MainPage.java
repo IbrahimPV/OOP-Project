@@ -59,8 +59,6 @@ public class MainPage extends JFrame{
 	}
 	class toUser implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			dispose();
-			user myUser = new user();
 		}
 	}
 		class toUserLogin implements ActionListener {
