@@ -23,3 +23,5 @@ MainPage$toUser.class
 MainPage$toUserLogin.class
 UserSignUp$backToMainPage.class
 UserSignUp$submit.class
+MainPage$toUser.class
+UserSignUp$submit.class
