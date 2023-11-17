@@ -3,6 +3,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class UserSignUp extends JFrame{
 
@@ -171,10 +173,17 @@ public class UserSignUp extends JFrame{
         public void actionPerformed(ActionEvent e) {
             if((nameText.getText().isEmpty()) || (passwordText.getText().isEmpty()) || (emailText.getText().isEmpty()) || (phoneNumberText.getText().isEmpty()) || (addressText.getText().isEmpty())) {
                 JOptionPane.showMessageDialog(null, "Please Fill All The Boxes");
-            } else if (false){ 
-                
-            } else {
-                user newUser = new user(nameText.getText(),passwordText.getText(),emailText.getText(),phoneNumberText.getText(),addressText.getText(),(String)day.getSelectedItem(),(String)month.getSelectedItem(), (String)year.getSelectedItem());
+                }else { 
+                    try (Connection connection = userDataBase.connect()) {
+                        userDataBase.createTable(connection);
+                        user newUser = new user(nameText.getText(),passwordText.getText(),emailText.getText(),phoneNumberText.getText(),addressText.getText(),(String)day.getSelectedItem(),(String)month.getSelectedItem(), (String)year.getSelectedItem());
+                        System.out.println("User data inserted successfully.");
+                        createUser.addUser(connection, newUser);
+                    } catch (SQLException f) {
+                        f.printStackTrace();
+                    }
+
+        
             }
         }
     }

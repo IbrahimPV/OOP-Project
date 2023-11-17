@@ -1,3 +1,3 @@
-public class volunteer extends user{
+public class volunteer {
     
 }
