@@ -39,10 +39,12 @@ public class AdminMain extends JFrame {
         add(scroll);
         add(new JLabel());
         add(pendEve);
-        pendingEvents.getTableHeader().setBounds(50,0,700,50);
-    	pendingEvents.setBounds(50,50,700,200);
-    	add(pendingEvents.getTableHeader( ), BorderLayout.PAGE_START);
-        add(pendingEvents, BorderLayout.CENTER);
+        //pendingEvents.getTableHeader().setBounds(50,0,700,50);
+    	//pendingEvents.setBounds(50,50,700,200);
+    	//add(pendingEvents.getTableHeader( ), BorderLayout.PAGE_START);
+        //add(pendingEvents, BorderLayout.CENTER);
+        scroll2.setBounds(50,50,700,70);
+        add(scroll2);
         
         
        
