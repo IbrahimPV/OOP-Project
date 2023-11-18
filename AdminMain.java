@@ -4,33 +4,50 @@ import javax.swing.*;
 
 public class AdminMain extends JFrame {
 	
-	JLabel welcome = new JLabel("Welcome");
-	JLabel name = new JLabel("");
-	JLabel actvEve = new JLabel("Active Events");
-	JLabel pendEve = new JLabel("Pending Events");
-	JTable activeEvents = new JTable();
-	JTable pendingEvents = new JTable();
+	JLabel welcome = new JLabel("		Welcome");
+	JLabel name = new JLabel("		Abdulla");
+	JLabel actvEve = new JLabel("	Active Events");
+	JLabel pendEve = new JLabel("	Pending Events");
+	
+	String [] columnNames = {"Event name", "Event type", "date"};
+	Object [][] data = {{"Cleaning beaches", "evniromental cleaning", "12,12,2023"},
+			{"Cleaning beaches", "evniromental cleaning", "12,12,2023"},
+			{"Cleaning beaches", "evniromental cleaning", "12,12,2023"}};
+	
+	JTable activeEvents = new JTable(data, columnNames);
+	JTable pendingEvents = new JTable(data, columnNames);
 	
 	
 	
 	public AdminMain() {
-		
-		setLayout(new GridLayout(17,2));
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(350, 580);
-        setVisible(true);
-   
         
-        add(welcome);
+		add(welcome);
         add(name);
         add(new JLabel());
         add(new JLabel());
         add(actvEve);
-        add(activeEvents);
+        activeEvents.getTableHeader().setBounds(50,0,700,50);
+    	activeEvents.setBounds(50,50,700,200);
+    	add(activeEvents.getTableHeader());
+    	add(activeEvents);
         add(new JLabel());
         add(pendEve);
+        pendingEvents.getTableHeader().setBounds(50,0,700,50);
+    	pendingEvents.setBounds(50,50,700,200);
+    	add(pendingEvents.getTableHeader());
         add(pendingEvents);
         
+       
+        
+        setLayout(new GridLayout(17,4));
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(700, 900);
+        setVisible(true);
+        
+	}
+	
+	public static void main(String [] args) {
+		new AdminMain();
 	}
 
 }
