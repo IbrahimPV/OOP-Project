@@ -4,15 +4,7 @@ import java.awt.*;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.DefaultCellEditor;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
+
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
@@ -50,7 +42,7 @@ public class AdminMain extends JFrame {
         add(actvEve);
         //activeEvents.getTableHeader().setBounds(50,0,700,50);
     	//activeEvents.setBounds(50,50,700,20);
-    	//add(activeEvents.getTableHeader(), BorderLayout.PAGE_START);
+    	//add(activeEvents.getTableHeader());
     	//add(activeEvents, BorderLayout.CENTER);
     	//activeEvents.setFillsViewportHeight(true);
         activeEvents.getColumn("See details").setCellRenderer(new ButtonRenderer());
@@ -69,12 +61,13 @@ public class AdminMain extends JFrame {
         add(scroll2);
         
         
-       
-        
         setLayout(new GridLayout(17,6));
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(700, 900);
         setVisible(true);
+        
+        ImageIcon logo = new ImageIcon("logo.jpeg");
+		setIconImage(logo.getImage());
         
 	}
 	

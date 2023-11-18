@@ -21,8 +21,8 @@ public class UserSignUp extends JFrame{
     // Constructer
     public UserSignUp() {
         super("COP28 User SignUp");
-
-		setSize(600, 800);
+ 
+		setSize(700, 900);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 

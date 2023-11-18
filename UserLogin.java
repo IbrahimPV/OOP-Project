@@ -16,7 +16,7 @@ public class UserLogin extends JFrame{
     public UserLogin() {
         setLayout(new GridLayout(17,4));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(350, 580);
+        setSize(700, 900);
         setVisible(true);
         //Login.setBounds(175,350,100,50);
         add(new JLabel(" "));

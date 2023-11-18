@@ -41,7 +41,7 @@ public class MainPage extends JFrame{
 		ImageIcon logo = new ImageIcon("logo.jpeg");
 		setIconImage(logo.getImage());
 		
-		setSize(350, 580);
+		setSize(700, 900);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
