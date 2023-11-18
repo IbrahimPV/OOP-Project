@@ -23,3 +23,7 @@ MainPage$toUser.class
 MainPage$toUserLogin.class
 UserSignUp$backToMainPage.class
 UserSignUp$submit.class
+/ButtonEditor$1.class
+/ButtonEditor.class
+/ButtonRenderer.class
+/AdminMain$1.class
