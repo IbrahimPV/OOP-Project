@@ -4,6 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.io.*;
 import java.awt.event.*;
+import java.sql.*;
 
 
 
@@ -28,14 +29,14 @@ public class MainPage extends javax.swing.JFrame {
         titleLabel = new javax.swing.JLabel();
         emailLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
-        emailButton = new javax.swing.JTextField();
-        passwordButton = new javax.swing.JTextField();
+        emailText = new javax.swing.JTextField();
+        passwordText = new javax.swing.JTextField();
         adminButton = new javax.swing.JButton();
         loginButton = new javax.swing.JButton();
         signUpButton = new javax.swing.JButton();
 
 
-        toAdimLogin a = new toAdimLogin();
+        toAdminLogin a = new toAdminLogin();
         adminButton.addActionListener(a);
     
         toUserLogin u = new toUserLogin();
@@ -57,7 +58,7 @@ public class MainPage extends javax.swing.JFrame {
         passwordLabel.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
         passwordLabel.setText("Password:");
 
-        emailButton.setName(""); // NOI18N
+        emailText.setName(""); // NOI18N
 
 
         adminButton.setText("Admin Login");
@@ -88,8 +89,8 @@ public class MainPage extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
-                    .addComponent(emailButton)
-                    .addComponent(passwordButton))
+                    .addComponent(emailText)
+                    .addComponent(passwordText))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -105,9 +106,9 @@ public class MainPage extends javax.swing.JFrame {
                         .addGap(73, 73, 73)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(emailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(emailButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(emailText, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35)
-                        .addComponent(passwordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(passwordText, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
@@ -125,10 +126,10 @@ public class MainPage extends javax.swing.JFrame {
      */
 
 
-	 class toUserLogin implements ActionListener {
+	 class toAdminLogin implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			dispose();
-			UserLogin myUserLogin = new UserLogin();
+            AdminLogin adminLogin = new AdminLogin();
 		}
 	}
 	 class toSignUp implements ActionListener {
@@ -137,22 +138,35 @@ public class MainPage extends javax.swing.JFrame {
 			UserSignUp mySignUp = new UserSignUp();
 		}
 	}
-	 class toAdimLogin implements ActionListener {
+	 class toUserLogin implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			dispose();
-			AdminLogin adminLogin = new AdminLogin();
+            try {
+            Connection connection = userDataBase.connect();
+            if (emailText.getText().isEmpty() || passwordText.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please fill in all the boxes");
+            } else if (createUser.checkLogin(connection, emailText.getText(),passwordText.getText())) {
+                dispose();
+                UserLogin myUserLogin = new UserLogin();
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid Username Or Password. Please Try Again.");
+
+            }
 			
-		}
-		
+		} catch(SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        }
+
 	}
 
 
     // Variables declaration - do not modify                     
     private javax.swing.JButton adminButton;
-    private javax.swing.JTextField emailButton;
+    private javax.swing.JTextField emailText;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JButton loginButton;
-    private javax.swing.JTextField passwordButton;
+    private javax.swing.JTextField passwordText;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JButton signUpButton;
     private javax.swing.JLabel titleLabel;
