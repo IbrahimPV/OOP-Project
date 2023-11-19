@@ -14,7 +14,7 @@ public class AdminMain extends JFrame {
 	JLabel actvEve = new JLabel("Active Events");
 	JLabel pendEve = new JLabel("Pending Events");
 	
-	String [] columnNames = {"Event name", "Event type", "date", "full", "See details"};
+	String [] columnNames = {"Event name", "Event type", "Date", "full?", "More details"};
 	Object [][] data = {{"Cleaning beaches", "evniromental cleaning", "12,12,2023", true,"Enter"},
 			{"Cleaning parks", "evniromental cleaning", "12,12,2023", false, "Enter"},
 			{"Recycling Plastic", "Recycling", "12,12,2023", false, "Enter"},
@@ -43,14 +43,14 @@ public class AdminMain extends JFrame {
 		
 		actvEve.setBounds(20,150, 100, 100);
         c.add(actvEve);
-        //activeEvents.getTableHeader().setBounds(50,0,700,50);
-    	//activeEvents.setBounds(50,50,700,20);
+        //activeEvents.getTableHeader().setBounds(10,220,700,50);
+    	//activeEvents.setBounds(10,220,700,100);
     	//add(activeEvents.getTableHeader());
     	//add(activeEvents, BorderLayout.CENTER);
     	//activeEvents.setFillsViewportHeight(true);
-        activeEvents.getColumn("See details").setCellRenderer(new ButtonRenderer());
-    	activeEvents.getColumn("See details").setCellEditor(new ButtonEditor(new JCheckBox()));
-    	scroll.setBounds(10,220,700,70);
+        activeEvents.getColumn("More details").setCellRenderer(new ButtonRenderer());
+    	activeEvents.getColumn("More details").setCellEditor(new ButtonEditor(new JCheckBox()));
+    	scroll.setBounds(10,220,700,100);
         c.add(scroll);
         pendEve.setBounds(20, 350, 100, 100);
         c.add(pendEve);
@@ -58,9 +58,9 @@ public class AdminMain extends JFrame {
     	//pendingEvents.setBounds(50,50,700,200);
     	//add(pendingEvents.getTableHeader( ), BorderLayout.PAGE_START);
         //add(pendingEvents, BorderLayout.CENTER);
-        pendingEvents.getColumn("See details").setCellRenderer(new ButtonRenderer());
-    	pendingEvents.getColumn("See details").setCellEditor(new ButtonEditor(new JCheckBox()));
-        scroll2.setBounds(10,420,700,70);
+        pendingEvents.getColumn("More details").setCellRenderer(new ButtonRenderer());
+    	pendingEvents.getColumn("More details").setCellEditor(new ButtonEditor(new JCheckBox()));
+        scroll2.setBounds(10,420,700,100);
         c.add(scroll2);
         
         
