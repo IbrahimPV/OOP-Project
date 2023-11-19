@@ -175,7 +175,6 @@ public class UserSignUp extends JFrame{
                 JOptionPane.showMessageDialog(null, "Please Fill All The Boxes");
                 }else { 
                     try (Connection connection = userDataBase.connect()) {
-                        userDataBase.createTable(connection);
                         user newUser = new user(nameText.getText(),passwordText.getText(),emailText.getText(),phoneNumberText.getText(),addressText.getText(),(String)day.getSelectedItem(),(String)month.getSelectedItem(), (String)year.getSelectedItem());
                         System.out.println("User data inserted successfully.");
                         createUser.addUser(connection, newUser);
