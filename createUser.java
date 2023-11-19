@@ -1,7 +1,7 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+import java.sql.ResultSet;
 public class createUser {
 
 
@@ -19,4 +19,33 @@ public class createUser {
             preparedStatement.executeUpdate();
         }
     }
+    public static boolean checkEmail(Connection connection, String email) throws SQLException{
+        String query="SELECT email FROM users";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            ResultSet rs = preparedStatement.executeQuery(query);
+            while (rs.next()) {
+                String Email=rs.getString("email");
+                if (Email.equals(email)){
+                    return true;
+                }
+            } return false;
+
+        }
+    }
+    public static boolean checkLogin(Connection connection, String email, String password) throws SQLException {
+        String query="SELECT email, password from users";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            ResultSet rs = preparedStatement.executeQuery(query);
+            while (rs.next()) {
+                String Email = rs.getString("email");
+                String Password = rs.getString("password");
+                if(Email.equals(email) || Password.equals(password)) {
+                    return true;
+                }
+            } return false;
+        }
+    }
+
+
+
 }

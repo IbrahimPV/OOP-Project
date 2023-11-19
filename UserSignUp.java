@@ -160,6 +160,10 @@ public class UserSignUp extends JFrame{
         submitButton.addActionListener(s);
 
 
+        // Login Page after signing up
+
+
+
     }
     class backToMainPage implements ActionListener{
         public void actionPerformed(ActionEvent e) {
@@ -170,21 +174,34 @@ public class UserSignUp extends JFrame{
         }
     }
     class submit implements ActionListener{
-        public void actionPerformed(ActionEvent e) {
-            if((nameText.getText().isEmpty()) || (passwordText.getText().isEmpty()) || (emailText.getText().isEmpty()) || (phoneNumberText.getText().isEmpty()) || (addressText.getText().isEmpty())) {
-                JOptionPane.showMessageDialog(null, "Please Fill All The Boxes");
-                }else { 
-                    try (Connection connection = userDataBase.connect()) {
-                        user newUser = new user(nameText.getText(),passwordText.getText(),emailText.getText(),phoneNumberText.getText(),addressText.getText(),(String)day.getSelectedItem(),(String)month.getSelectedItem(), (String)year.getSelectedItem());
-                        System.out.println("User data inserted successfully.");
-                        createUser.addUser(connection, newUser);
-                    } catch (SQLException f) {
-                        f.printStackTrace();
-                    }
+        public void actionPerformed(ActionEvent e){
+            try{
+                Connection connection = userDataBase.connect();
+                if((nameText.getText().isEmpty()) || (passwordText.getText().isEmpty()) || (emailText.getText().isEmpty()) || (phoneNumberText.getText().isEmpty()) || (addressText.getText().isEmpty())) {
+                    JOptionPane.showMessageDialog(null, "Please Fill All The Boxes");
+                    }else if (createUser.checkEmail(connection, emailText.getText())){
+                        JOptionPane.showMessageDialog(null, "This email has already been used");
+                    } else{ 
+                        try  {
+                            user newUser = new user(nameText.getText(),passwordText.getText(),emailText.getText(),phoneNumberText.getText(),addressText.getText(),(String)day.getSelectedItem(),(String)month.getSelectedItem(), (String)year.getSelectedItem());
+                            System.out.println("User data inserted successfully.");
+                            createUser.addUser(connection, newUser);
+                            JOptionPane.showMessageDialog(null, "You have sucessfully created a new account!");
+                            dispose();
+                            MainPage back = new MainPage();
 
-        
+                        } finally {
+                            if (connection != null) {
+                                connection.close();
+                            }
+                        }
+                }
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
             }
         }
-    }
 
 }
+
