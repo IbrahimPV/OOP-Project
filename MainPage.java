@@ -143,12 +143,12 @@ public class MainPage extends javax.swing.JFrame {
             try {
             Connection connection = userDataBase.connect();
             if (emailText.getText().isEmpty() || passwordText.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Please fill in all the boxes");
+                JOptionPane.showMessageDialog(null, "Please fill in all the boxes.");
             } else if (createUser.checkLogin(connection, emailText.getText(),passwordText.getText())) {
                 dispose();
                 UserLogin myUserLogin = new UserLogin();
             } else {
-                JOptionPane.showMessageDialog(null, "Invalid Username Or Password. Please Try Again.");
+                JOptionPane.showMessageDialog(null, "Invalid Email Or Password. Please Try Again.");
 
             }
 			
