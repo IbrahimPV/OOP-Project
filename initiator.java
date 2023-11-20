@@ -1,3 +1,3 @@
-public class initiator extends user{
+public class initiator {
     
 }
