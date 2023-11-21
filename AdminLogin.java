@@ -1,6 +1,6 @@
 //GUI for Admin login page
 import java.awt.*;
-import javax.swing.event.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class AdminLogin extends JFrame {
@@ -11,6 +11,9 @@ public class AdminLogin extends JFrame {
     JLabel pas = new JLabel("     Enter Password: ", SwingConstants.LEFT);
     JTextField unf = new JTextField();
     JTextField pasf = new JTextField();
+
+    String Username = "Admin";
+    String Password = "Admin123";
     
     
     public AdminLogin() {
@@ -40,5 +43,21 @@ public class AdminLogin extends JFrame {
         add(new JLabel(" "));
         add(new JLabel(" "));
         add(Login);
+
+        login2 l = new login2();
+        Login.addActionListener(l);
+
+
+
+        }
+
+        class login2 implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if(unf.getText().equals(Username) && pasf.getText().equals(Password))
+                    new AdminMain();
+            }
+
         }
 }

@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
+import java.util.*;
 
 
 public class AdminMain extends JFrame {
@@ -13,8 +14,11 @@ public class AdminMain extends JFrame {
 	JLabel welcome = new JLabel("Welcome");
 	JLabel actvEve = new JLabel("Active Events");
 	JLabel pendEve = new JLabel("Pending Events");
+
+    ArrayList <String> a = new ArrayList<String>(3);
 	
 	String [] columnNames = {"Event name", "Event type", "Date", "full?", "More details"};
+
 	Object [][] data = {{"Cleaning beaches", "evniromental cleaning", "12,12,2023", true,"Enter"},
 			{"Cleaning parks", "evniromental cleaning", "12,12,2023", false, "Enter"},
 			{"Recycling Plastic", "Recycling", "12,12,2023", false, "Enter"},
