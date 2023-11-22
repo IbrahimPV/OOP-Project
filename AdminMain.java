@@ -10,6 +10,8 @@ import java.util.*;
 
 
 public class AdminMain extends JFrame {
+
+    String a = "hello";
 	
 	JLabel welcome = new JLabel("Welcome");
 	JLabel actvEve = new JLabel("Active Events");
