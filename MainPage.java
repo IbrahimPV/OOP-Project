@@ -145,8 +145,7 @@ public class MainPage extends javax.swing.JFrame {
             if (emailText.getText().isEmpty() || passwordText.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Please fill in all the boxes.");
             } else if (createUser.checkLogin(connection, emailText.getText(),passwordText.getText())) {
-                dispose();
-                UserLogin myUserLogin = new UserLogin();
+                UserMainM newPage = new UserMainM();
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid Email Or Password. Please Try Again.");
 
