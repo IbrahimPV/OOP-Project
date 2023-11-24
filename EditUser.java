@@ -229,6 +229,8 @@ public class EditUser extends JFrame{
                             preparedStatement.setString(8, (String) year.getSelectedItem());
     
                             preparedStatement.executeUpdate();
+                            JOptionPane.showMessageDialog(null, "Your Details Have Been Saved")
+                            dispose();
     
 
                         }
