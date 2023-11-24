@@ -195,8 +195,8 @@ public class EditUser extends JFrame{
         submitButton = new JButton("Save");
         submitButton.setBounds(240,525,225,50);
         c.add(submitButton);
-        // submit s = new submit();
-        // submitButton.addActionListener(s);
+        Save s = new Save();
+        submitButton.addActionListener(s);
 
 
         // Login Page after signing up
@@ -209,34 +209,38 @@ public class EditUser extends JFrame{
             dispose();
         }
     }
-    class submit implements ActionListener{
-        public void actionPerformed(ActionEvent e){
-            try{
-                Connection connection = userDataBase.connect();
-                if((nameText.getText().isEmpty()) || (passwordText.getText().isEmpty()) || (emailText.getText().isEmpty()) || (phoneNumberText.getText().isEmpty()) || (addressText.getText().isEmpty())) {
+    public class Save implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            try {
+                if (nameText.getText().isEmpty() || passwordText.getText().isEmpty() || emailText.getText().isEmpty()
+                        || phoneNumberText.getText().isEmpty() || addressText.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Please Fill All The Boxes");
-                    }else if (createUser.checkEmail(connection, emailText.getText())){
-                        JOptionPane.showMessageDialog(null, "This email has already been used");
-                    } else{ 
-                        try  {
-                            user newUser = new user(nameText.getText(),passwordText.getText(),emailText.getText(),phoneNumberText.getText(),addressText.getText(),(String)day.getSelectedItem(),(String)month.getSelectedItem(), (String)year.getSelectedItem());
-                            System.out.println("User data inserted successfully.");
-                            createUser.addUser(connection, newUser);
-                            JOptionPane.showMessageDialog(null, "You have sucessfully created a new account!");
-                            dispose();
-                            MainPage back = new MainPage();
+                } else {
+                    try {
+                        String updateSQL = "UPDATE `users` SET `name`= ?, `email`= ?, `password`= ?, `phoneNo`= ?, `address`= ?, `day`= ?, `month`= ?, `year`= ?";
+                        try (PreparedStatement preparedStatement = connection.prepareStatement(updateSQL)) {
+                            preparedStatement.setString(1, nameText.getText());
+                            preparedStatement.setString(2, emailText.getText());
+                            preparedStatement.setString(3, passwordText.getText());
+                            preparedStatement.setString(4, phoneNumberText.getText());
+                            preparedStatement.setString(5, addressText.getText());
+                            preparedStatement.setString(6, (String) day.getSelectedItem());
+                            preparedStatement.setString(7, (String) month.getSelectedItem());
+                            preparedStatement.setString(8, (String) year.getSelectedItem());
+    
+                            preparedStatement.executeUpdate();
+    
 
-                        } finally {
-                            if (connection != null) {
-                                connection.close();
-                            }
                         }
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
                 }
-
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 ex.printStackTrace();
             }
-            }
         }
-
+    }
 }
+
+    // ... (existing code)
