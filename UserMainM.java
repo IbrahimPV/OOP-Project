@@ -114,7 +114,6 @@ public class UserMainM extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         new EditUser().setVisible(true);
-        
     }                                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -134,6 +133,7 @@ public class UserMainM extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
+        new VolunteeringJob().setVisible(true);
     }                                        
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
