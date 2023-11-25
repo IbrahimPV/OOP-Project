@@ -51,7 +51,7 @@ public class volunteer extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Initiative Title", "Initiator Name", "Credit Points", "Time", "Date", "Status"
+                "Initiative Title", "Initiator Name", "Credit Points", "Time", "Date", "Description", "Status"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
