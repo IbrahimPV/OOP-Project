@@ -58,7 +58,7 @@ public class UserMainM extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("View My Initiatives & Volunteering Jobs");
+        jButton5.setText("View My Volunteering Jobs");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
