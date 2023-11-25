@@ -170,7 +170,7 @@ public class AddInitiative extends javax.swing.JFrame {
                 preparedStatement.setString(4, jTextField4.getText());
                 preparedStatement.setString(5, jTextField3.getText());
                 preparedStatement.setString(6, jTextArea1.getText());
-                preparedStatement.setString(7, "Pending");
+                preparedStatement.setString(7, "Active");
                 preparedStatement.setInt(8, createUser.getSavedID());
                 preparedStatement.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Initiavte Has Been Created");
