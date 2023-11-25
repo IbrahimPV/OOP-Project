@@ -162,11 +162,11 @@ public class AddInitiative extends javax.swing.JFrame {
             String time=jTextField4.getText();
             String description=jTextArea1.getText();
         } else {
-            String insertSQL = "INSERT INTO initiatives (intiativeName, initiator, points, time, date, description, status, userID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String insertSQL = "INSERT INTO initiatives (initiativeName, initiator, points, time, date, description, status, userID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
                 preparedStatement.setString(1, jTextField1.getText());
                 preparedStatement.setString(2, createUser.getUName());
-                preparedStatement.setString(3, jTextField2.getText());
+                preparedStatement.setInt(3, Integer.parseInt(jTextField2.getText()));
                 preparedStatement.setString(4, jTextField4.getText());
                 preparedStatement.setString(5, jTextField3.getText());
                 preparedStatement.setString(6, jTextArea1.getText());
