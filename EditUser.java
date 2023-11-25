@@ -217,7 +217,7 @@ public class EditUser extends JFrame{
                     JOptionPane.showMessageDialog(null, "Please Fill All The Boxes");
                 } else {
                     try {
-                        String updateSQL = "UPDATE `users` SET `name`= ?, `email`= ?, `password`= ?, `phoneNo`= ?, `address`= ?, `day`= ?, `month`= ?, `year`= ?";
+                        String updateSQL = "UPDATE `users` SET `name`= ?, `email`= ?, `password`= ?, `phoneNo`= ?, `address`= ?, `day`= ?, `month`= ?, `year`= ? WHERE ID = " + createUser.getSavedID();
                         try (PreparedStatement preparedStatement = connection.prepareStatement(updateSQL)) {
                             preparedStatement.setString(1, nameText.getText());
                             preparedStatement.setString(2, emailText.getText());
