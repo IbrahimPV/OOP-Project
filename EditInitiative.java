@@ -56,7 +56,7 @@ public class EditInitiative extends javax.swing.JFrame {
 
         jPanel1.setBackground(java.awt.SystemColor.activeCaption);
 
-        jLabel7.setText("Initiative Name:");
+        jLabel7.setText("Initiative:");
 
         jLabel8.setText("Credit Points:");
 
@@ -144,7 +144,7 @@ public class EditInitiative extends javax.swing.JFrame {
 
         jPanel2.setBackground(java.awt.SystemColor.activeCaption);
 
-        jLabel2.setText("Initiative Name:");
+        jLabel2.setText("Initiative:");
 
         jLabel3.setText("Credit Points:");
 
