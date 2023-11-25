@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 public class createUser {
 
     private static int savedID;
+    private static String uName;
 
     public static void addUser(Connection connection, user p) throws SQLException {
         String insertSQL = "INSERT INTO users (name, email, password, phoneNo, address, day, month, year) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -34,11 +35,12 @@ public class createUser {
         }
     }
     public static boolean checkLogin(Connection connection, String email, String password) throws SQLException {
-        String query="SELECT ID, email, password from users";
+        String query="SELECT ID, email, password, name from users";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             ResultSet rs = preparedStatement.executeQuery(query);
             while (rs.next()) {
                 savedID = rs.getInt("ID");
+                uName = rs.getString("name");
                 String Email = rs.getString("email");
                 String Password = rs.getString("password");
                 if(Email.equals(email) || Password.equals(password)) {
@@ -50,6 +52,10 @@ public class createUser {
     public static int getSavedID() {
         return savedID;
     }
+    public static String getUName() {
+        return uName;
+    }
+
 
 
 

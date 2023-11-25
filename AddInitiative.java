@@ -1,9 +1,11 @@
 import javax.swing.*;
+import java.sql.*;
 /**
  *
  * @author alsuw
  */
 public class AddInitiative extends javax.swing.JFrame {
+    private Connection connection;
 
     /**
      * Creates new form AddInitiative
@@ -20,7 +22,12 @@ public class AddInitiative extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
-
+        
+        try{
+            connection = userDataBase.connect();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -148,19 +155,40 @@ public class AddInitiative extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(jTextField1.getText().isEmpty()||jTextField2.getText().isEmpty()||jTextField3.getText().isEmpty()||jTextField4.getText().isEmpty()||jTextArea1.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Please fill all the boxes to initiate a new event", "Error", JOptionPane.ERROR_MESSAGE);
-        }else{
+        }else if (false){
             String name=jTextField1.getText();
             String points=jTextField2.getText();
             String date=jTextField3.getText();
             String time=jTextField4.getText();
             String description=jTextArea1.getText();
+        } else {
+            String insertSQL = "INSERT INTO initiatives (intiativeName, initiator, points, time, date, description, status, userID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
+                preparedStatement.setString(1, jTextField1.getText());
+                preparedStatement.setString(2, createUser.getUName());
+                preparedStatement.setString(3, jTextField2.getText());
+                preparedStatement.setString(4, jTextField4.getText());
+                preparedStatement.setString(5, jTextField3.getText());
+                preparedStatement.setString(6, jTextArea1.getText());
+                preparedStatement.setString(7, "Pending");
+                preparedStatement.setInt(8, createUser.getSavedID());
+                preparedStatement.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Initiavte Has Been Created");
+                dispose();
+
+            } catch(SQLException e) {
+                e.printStackTrace();
+            }
         }
+
+        
         
     }                                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        new AddInitiative().setVisible(false);
+        // new AddInitiative().setVisible(false);
+        dispose();
     }                                        
 
     /**
