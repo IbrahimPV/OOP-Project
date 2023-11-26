@@ -98,8 +98,22 @@ public class AdminMain extends JFrame {
 }
 
 class Delete implements ActionListener {
+    @Override
     public void actionPerformed(ActionEvent e) {
-        @Override
+        
+    }
+}
+
+class Approve implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
+    }
+}
+
+class Reject implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent e) {
         
     }
 }
