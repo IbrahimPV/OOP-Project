@@ -10,22 +10,22 @@ import java.util.*;
 
 
 public class AdminMain extends JFrame {
-
-    String a = "hello";
 	
 	JLabel welcome = new JLabel("Welcome");
 	JLabel actvEve = new JLabel("Active Events");
 	JLabel pendEve = new JLabel("Pending Events");
-
-    ArrayList <String> a = new ArrayList<String>(3);
+    JButton apr = new JButton("Approve");
+    JButton rej = new JButton("Reject");
+    JButton del = new JButton("Delete event");
+    
 	
-	String [] columnNames = {"Event name", "Event type", "Date", "full?", "More details"};
+	String [] columnNames = {"Event name", "Event type", "Date", "full?"};
 
-	Object [][] data = {{"Cleaning beaches", "evniromental cleaning", "12,12,2023", true,"Enter"},
-			{"Cleaning parks", "evniromental cleaning", "12,12,2023", false, "Enter"},
-			{"Recycling Plastic", "Recycling", "12,12,2023", false, "Enter"},
-			{"Raising Awarness", "Educational ", "12,12,2023", true, "Enter"},
-			{"Cleaning beaches", "evniromental cleaning", "12,12,2023", false, "Enter"}};
+	Object [][] data = {{"Cleaning beaches", "evniromental cleaning", "12,12,2023", true},
+			{"Cleaning parks", "evniromental cleaning", "12,12,2023", false},
+			{"Recycling Plastic", "Recycling", "12,12,2023", false},
+			{"Raising Awarness", "Educational ", "12,12,2023", true},
+			{"Cleaning beaches", "evniromental cleaning", "12,12,2023", false}};
 	
 	
 	JTable activeEvents = new JTable(data, columnNames);
@@ -54,20 +54,27 @@ public class AdminMain extends JFrame {
     	//add(activeEvents.getTableHeader());
     	//add(activeEvents, BorderLayout.CENTER);
     	//activeEvents.setFillsViewportHeight(true);
-        activeEvents.getColumn("More details").setCellRenderer(new ButtonRenderer());
-    	activeEvents.getColumn("More details").setCellEditor(new ButtonEditor(new JCheckBox()));
+        //activeEvents.getColumn("More details").setCellRenderer(new ButtonRenderer());
+    	//activeEvents.getColumn("More details").setCellEditor(new ButtonEditor(new JCheckBox()));
     	scroll.setBounds(10,220,700,100);
         c.add(scroll);
-        pendEve.setBounds(20, 350, 100, 100);
+        del.setBounds(610, 330, 100, 60);
+        c.add(del);
+
+        pendEve.setBounds(20, 410, 100, 100);
         c.add(pendEve);
         //pendingEvents.getTableHeader().setBounds(50,0,700,50);
     	//pendingEvents.setBounds(50,50,700,200);
     	//add(pendingEvents.getTableHeader( ), BorderLayout.PAGE_START);
         //add(pendingEvents, BorderLayout.CENTER);
-        pendingEvents.getColumn("More details").setCellRenderer(new ButtonRenderer());
-    	pendingEvents.getColumn("More details").setCellEditor(new ButtonEditor(new JCheckBox()));
-        scroll2.setBounds(10,420,700,100);
+        //pendingEvents.getColumn("More details").setCellRenderer(new ButtonRenderer());
+    	//pendingEvents.getColumn("More details").setCellEditor(new ButtonEditor(new JCheckBox()));
+        scroll2.setBounds(10,480,700,100);
         c.add(scroll2);
+        apr.setBounds(610, 590, 100, 60);
+        c.add(apr);
+        rej.setBounds(500, 590, 100, 60);
+        c.add(rej);
         
         
         //setLayout(new GridLayout(17,6));
@@ -88,78 +95,4 @@ public class AdminMain extends JFrame {
 			}
 			});
 		}
-	}
-
-
-
-
-class ButtonRenderer extends JButton implements TableCellRenderer {
-
-    public ButtonRenderer() {
-        setOpaque(true);
-    }
-
-    @Override
-    public Component getTableCellRendererComponent(JTable table, Object value,
-            boolean isSelected, boolean hasFocus, int row, int column) {
-        if (isSelected) {
-            setForeground(table.getSelectionForeground());
-            setBackground(table.getSelectionBackground());
-        } else {
-            setForeground(table.getForeground());
-            setBackground(UIManager.getColor("Button.background"));
-        }
-        setText((value == null) ? "" : value.toString());
-        return this;
-    }
-}
-
-class ButtonEditor extends DefaultCellEditor {
-
-    protected JButton button;
-    private String label;
-    private boolean isPushed;
-
-    public ButtonEditor(JCheckBox checkBox) {
-        super(checkBox);
-        button = new JButton();
-        button.setOpaque(true);
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                fireEditingStopped();
-            }
-        });
-    }
-
-    @Override
-    public Component getTableCellEditorComponent(JTable table, Object value,
-            boolean isSelected, int row, int column) {
-        if (isSelected) {
-            button.setForeground(table.getSelectionForeground());
-            button.setBackground(table.getSelectionBackground());
-        } else {
-            button.setForeground(table.getForeground());
-            button.setBackground(table.getBackground());
-        }
-        label = (value == null) ? "" : value.toString();
-        button.setText(label);
-        isPushed = true;
-        return button;
-    }
-
-    @Override
-    public Object getCellEditorValue() {
-        if (isPushed) {
-            JOptionPane.showMessageDialog(button, label + ": Ouch!");
-        }
-        isPushed = false;
-        return label;
-    }
-
-    @Override
-    public boolean stopCellEditing() {
-        isPushed = false;
-        return super.stopCellEditing();
-    }
 }
