@@ -46,7 +46,7 @@ public class MainPage extends javax.swing.JFrame {
         signUpButton.addActionListener(s);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 900));
+        setPreferredSize(new java.awt.Dimension(500, 600));
 		setVisible(true);
         
         titleLabel.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
