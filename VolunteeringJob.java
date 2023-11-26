@@ -1,4 +1,12 @@
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.sql.*;
+import javax.swing.table.*;
+
 public class VolunteeringJob extends javax.swing.JFrame {
+    private Connection connection;
 
     /**
      * Creates new form VolunteeringJob
@@ -15,6 +23,11 @@ public class VolunteeringJob extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
+        try{
+            connection = userDataBase.connect();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -31,23 +44,9 @@ public class VolunteeringJob extends javax.swing.JFrame {
         jLabel1.setText("My Volunteering History");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
+            new Object [][] {},
             new String [] {
-                "Initiative Title", "Initiator Name", "Credit Points", "Time", "Date", "Description", "Status"
+                "ID", "Initiative Title", "Initiator Name", "Credit Points", "Time", "Date", "Description", "Status"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -105,11 +104,38 @@ public class VolunteeringJob extends javax.swing.JFrame {
         );
 
         pack();
+        jTable1.getColumnModel().getColumn(0).setMinWidth(0);
+        jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
+        load();
     }// </editor-fold>                        
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
-    }                                           
+    }    
+    public void load() {
+        DefaultTableModel t = (DefaultTableModel) jTable1.getModel();
+        t.setRowCount(0); // Clear existing rows
+
+        String query = "SELECT * FROM volunteers AS v " + "INNER JOIN initiatives AS i ON i.ID = v.intiativeID " + "WHERE v.userID = " + createUser.getSavedID();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                Object[] col = new Object[8];
+                col[0] = rs.getInt("ID");
+                col[1] = rs.getString("initiativeName");
+                col[2] = rs.getString("initiator");
+                col[3] = rs.getInt("points");
+                col[4] = rs.getString("time");
+                col[5] = rs.getString("date");
+                col[6] = rs.getString("description");
+                col[7] = rs.getString("status");
+                
+                t.addRow(col);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
+        }                                       
 
     /**
      * @param args the command line arguments

@@ -50,9 +50,11 @@ public class volunteer extends javax.swing.JFrame {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {},
             new String [] {
-                "Initiative Title", "Initiator Name", "Credit Points", "Time", "Date", "Description", "Status"
+                "ID", "Initiative Title", "Initiator Name", "Credit Points", "Time", "Date", "Description", "Status"
             }
         ));
+        jTable1.getColumnModel().getColumn(0).setMinWidth(0);
+        jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
         loadDataToTable();
 
 
@@ -116,14 +118,16 @@ public class volunteer extends javax.swing.JFrame {
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                Object[] col = new Object[7];
-                col[0] = rs.getString("initiativeName");
-                col[1] = rs.getString("initiator");
-                col[2] = rs.getInt("points");
-                col[3] = rs.getString("time");
-                col[4] = rs.getString("date");
-                col[5] = rs.getString("description");
-                col[6] = rs.getString("status");
+                Object[] col = new Object[8];
+                col[0] = rs.getInt("ID");
+                col[1] = rs.getString("initiativeName");
+                col[2] = rs.getString("initiator");
+                col[3] = rs.getInt("points");
+                col[4] = rs.getString("time");
+                col[5] = rs.getString("date");
+                col[6] = rs.getString("description");
+                col[7] = rs.getString("status");
+                
                 t.addRow(col);
             }
         } catch (SQLException e) {
@@ -141,31 +145,43 @@ public class volunteer extends javax.swing.JFrame {
         if (row == -1) {
             JOptionPane.showMessageDialog(null, "Please select an initiative.");
             return; 
-        }
-    
-        String insertSQL = "SELECT * FROM initiatives WHERE "+ t.getValueAt(row,2);
-        try (PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                initID = rs.getInt("ID");
+        } else if (checkIfAlreadyVolunteered()) {
+            JOptionPane.showMessageDialog(null,"You are already volunteered to this event");
+        } else {
+            String query = "INSERT INTO volunteers (userID, intiativeID) VALUES (?, ?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setInt(1, createUser.getSavedID());
+                preparedStatement.setInt(2, (int) t.getValueAt(row,0));
+                preparedStatement.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Initiative has been volunteered for.");
+                dispose();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error inserting into volunteers table.");
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error retrieving initiative ID.");
-            return;
+            
         }
     
-        String query = "INSERT INTO volunteers (userID, intiativeID) VALUES (?, ?)";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, createUser.getSavedID());
-            preparedStatement.setInt(2, initID);
-            preparedStatement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Initiative has been volunteered for.");
-            dispose();
+    
+    }
+    private boolean checkIfAlreadyVolunteered()  {
+        TableModel t = jTable1.getModel();
+        int row = jTable1.getSelectedRow();
+        String q = "SELECT * FROM volunteers";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(q)) {
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()) {
+                int u = rs.getInt("userID");
+                int i = rs.getInt("intiativeID");
+                if (createUser.getSavedID() == u && (int) t.getValueAt(row,0) == i) {
+                    return true;
+                }
+            };
         } catch (SQLException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error inserting into volunteers table.");
         }
+        return false;
+
     }
     /**
      * @param args the command line arguments
