@@ -75,6 +75,13 @@ public class AdminMain extends JFrame {
         c.add(apr);
         rej.setBounds(500, 590, 100, 60);
         c.add(rej);
+
+        Delete d = new Delete();
+        del.addActionListener(d);
+        Approve a = new Approve();
+        apr.addActionListener(a);
+        Reject r = new Reject();
+        rej.addActionListener(r);
         
         
         //setLayout(new GridLayout(17,6));
@@ -108,8 +115,8 @@ class Delete implements ActionListener {
         else if(activeEvents.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "The table is empty");
         }
-    }
     */
+    }
 }
 
 class Approve implements ActionListener {
