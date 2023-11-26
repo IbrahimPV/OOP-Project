@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
-import java.util.*;
 
 
 public class AdminMain extends JFrame {
@@ -57,10 +56,10 @@ public class AdminMain extends JFrame {
         //activeEvents.getColumn("More details").setCellRenderer(new ButtonRenderer());
     	//activeEvents.getColumn("More details").setCellEditor(new ButtonEditor(new JCheckBox()));
     	scroll.setBounds(10,220,700,100);
+        activeEvents.setRowSelectionAllowed(true);
         c.add(scroll);
         del.setBounds(610, 330, 100, 60);
         c.add(del);
-
         pendEve.setBounds(20, 410, 100, 100);
         c.add(pendEve);
         //pendingEvents.getTableHeader().setBounds(50,0,700,50);
@@ -70,6 +69,7 @@ public class AdminMain extends JFrame {
         //pendingEvents.getColumn("More details").setCellRenderer(new ButtonRenderer());
     	//pendingEvents.getColumn("More details").setCellEditor(new ButtonEditor(new JCheckBox()));
         scroll2.setBounds(10,480,700,100);
+        pendingEvents.setRowSelectionAllowed(true);
         c.add(scroll2);
         apr.setBounds(610, 590, 100, 60);
         c.add(apr);
@@ -95,4 +95,11 @@ public class AdminMain extends JFrame {
 			}
 			});
 		}
+}
+
+class Delete implements ActionListener {
+    public void actionPerformed(ActionEvent e) {
+        @Override
+        
+    }
 }
