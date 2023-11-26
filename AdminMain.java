@@ -100,7 +100,13 @@ public class AdminMain extends JFrame {
 class Delete implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        DefaultTableModel tb1 = (DefaultTableModel) activeEvents.getModel();
+        if(activeEvents.getSelectedRowCount() == 1) {
+            activeEvents.removeRow(activeEvents.getSelectedRow());
+        } 
+        else if(activeEvents.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "The table is empty");
+        }
     }
 }
 
