@@ -6,10 +6,10 @@ import java.sql.*;
 
 public class NewMainPage extends JFrame {
 
-    JButton adminLogin, signUp, logIn;
-    JLabel title, email, pass;
-    JTextField emailInput, passInput;
-    Container c;
+    private JButton adminLogin, signUp, logIn;
+    private JLabel title, email, pass;
+    private JTextField emailInput, passInput;
+    private Container c;
 
     public static void main(String [] args) {
         new NewMainPage();
@@ -76,42 +76,43 @@ public class NewMainPage extends JFrame {
 
         
     }
-}
-
-
-class toAdminLogin implements ActionListener {
-    public void actionPerformed(ActionEvent e) {
-        //dispose();
-        new AdminLogin();
-    }
-}
- class toSignUp implements ActionListener {
-    public void actionPerformed(ActionEvent e) {
-        //dispose();
-        new UserSignUp();
-    }
-}
-
- class toUserLogin implements ActionListener {
-    public void actionPerformed(ActionEvent e) {
-        try {
-        Connection connection = userDataBase.connect();
-        if (emailInput.getText().isEmpty() || passInput.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please fill in all the boxes.");
-        } else if (createUser.checkLogin(connection, emailInput.getText, passInput.getText)) {
+    class toAdminLogin implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
             //dispose();
-            UserMainM x = new UserMainM();
-        } else {
-            JOptionPane.showMessageDialog(null, "Invalid Email Or Password. Please Try Again.");
-
+            new AdminLogin();
         }
-        
-    } catch(SQLException ex) {
-        ex.printStackTrace();
     }
-
+     class toSignUp implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            //dispose();
+            new UserSignUp();
+        }
     }
-
+    
+     class toUserLogin implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            try {
+            Connection connection = userDataBase.connect();
+            if (emailInput.getText().isEmpty() || passInput.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please fill in all the boxes.");
+            } else if (createUser.checkLogin(connection, emailInput.getText(), passInput.getText())) {
+                //dispose();
+                UserMainM x = new UserMainM();
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid Email Or Password. Please Try Again.");
+    
+            }
+            
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        }
+    
+        }
+    
+    }
 }
+
+
+
 // emailInput.getText().isEmpty() || passInput.getText().isEmpty()
 //emailInput.getText(), passInput.getText()
