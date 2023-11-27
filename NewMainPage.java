@@ -30,9 +30,9 @@ public class NewMainPage extends JFrame {
         passInput = new JTextField();
 
         adminLogin = new JButton("Admin Login");
-        adminLogin.setBounds(350, 20, 80, 40);
-        //toAdminLogin a = new toAdminLogin();
-        //adminLogin.addActionListener(a);
+        adminLogin.setBounds(320, 20, 100, 40);
+        toAdminLogin a = new toAdminLogin();
+        adminLogin.addActionListener(a);
         c.add(adminLogin);
 
         title = new JLabel("COP28 Login Page");
@@ -63,14 +63,14 @@ public class NewMainPage extends JFrame {
 
         signUp = new JButton("SignUp");
         signUp.setBounds(20,450,200,50);
-        //toSignUp b = new toSignUp();
-        //signUp.addActionListener(b);
+        toSignUp b = new toSignUp();
+        signUp.addActionListener(b);
         c.add(signUp);
 
         logIn = new JButton("Login");
         logIn.setBounds(225,450,200,50);
-        //toUserLogin d = new toUserLogin();
-        //logIn.addActionListener(d);
+        toUserLogin d = new toUserLogin();
+        logIn.addActionListener(d);
         c.add(logIn);
 
 
@@ -111,8 +111,3 @@ public class NewMainPage extends JFrame {
     
     }
 }
-
-
-
-// emailInput.getText().isEmpty() || passInput.getText().isEmpty()
-//emailInput.getText(), passInput.getText()
