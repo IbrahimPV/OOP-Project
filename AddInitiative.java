@@ -175,6 +175,7 @@ public class AddInitiative extends javax.swing.JFrame {
                 preparedStatement.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Initiavte Has Been Created");
                 dispose();
+                new MainPage().setVisible(true);
 
             } catch(SQLException e) {
                 e.printStackTrace();

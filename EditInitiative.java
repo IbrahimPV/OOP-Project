@@ -65,6 +65,11 @@ public class EditInitiative extends javax.swing.JFrame {
         });
 
         jButton2.setText("Delete Initiative");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("View Volunteers");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -115,12 +120,29 @@ public class EditInitiative extends javax.swing.JFrame {
         );
 
         pack();
+        loadMyInitiatives();
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         dispose();                                         
         new UserMainM().setVisible(true);
-    }                                        
+    } 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+        TableModel t = jTable1.getModel();
+        int row = jTable1.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Please select an initiative.");
+        } else {
+        String query = "DELETE FROM initiatives WHERE ID = " + t.getValueAt(row, 0);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.executeUpdate();
+            loadMyInitiatives();
+    
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}                                                               
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         int row = jTable1.getSelectedRow();
@@ -128,10 +150,9 @@ public class EditInitiative extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please select an initiative.");
         } else {
             TableModel t = jTable1.getModel();
-            selectedInit = (int) t.getValueAt(row,0); 
-        }
-        new ActiveVolunteers2().setVisible(true);                                      
-        // TODO add your handling code here:
+            selectedInit = (int) t.getValueAt(row,0);
+            new ActiveVolunteers2().setVisible(true); 
+        }                                    
     }                                        
 
     /**

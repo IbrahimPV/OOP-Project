@@ -67,6 +67,18 @@ public class createUser {
         }
 
     }
+    public static int displayPoints(Connection connection) {
+        String query = "SELECT points from users WHERE ID =" + createUser.getSavedID();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            ResultSet rs = preparedStatement.executeQuery(query);
+            return rs.getInt("points");
+            }catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    
 
 
 
