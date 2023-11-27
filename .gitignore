@@ -30,3 +30,5 @@ UserSignUp$submit.class
 MainPage$toUser.class
 MainPage$toUserLogin.class
 UserSignUp$submit.class
+bin/.project
+.project

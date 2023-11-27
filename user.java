@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class user {
     private String name, password, email, phoneNumber, day, month, year, address;
-    private String userID;
+    //private String userID;
 
     public user(String name, String password, String email, String phoneNumber, String address, String day, String month, String year) {
         this.name = name;
@@ -21,7 +21,7 @@ public class user {
         this.month = month;
         this.year = year;
         this.address = address;
-        userID = IDGenerator();
+        //userID = IDGenerator();
     }
 
     public String getName() {
@@ -87,16 +87,16 @@ public class user {
     public void setAddress(String address) {
         this.address = address;
     }
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
-    public String getUserID() {
-        return userID;
-    }
-    public String IDGenerator() {
-        return "#" + Integer.toString((int)Math.floor(Math.random()*1000000));
+    // public void setUserID(String userID) {
+    //     this.userID = userID;
+    // }
+    // public String getUserID() {
+    //     return userID;
+    // }
+    // // public String IDGenerator() {
+    //     return "#" + Integer.toString((int)Math.floor(Math.random()*1000000));
 
-    }
+    // }
     
    
     
