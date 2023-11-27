@@ -36,6 +36,7 @@ public class MainPage extends javax.swing.JFrame {
         signUpButton = new javax.swing.JButton();
 
 
+
         toAdminLogin a = new toAdminLogin();
         adminButton.addActionListener(a);
     

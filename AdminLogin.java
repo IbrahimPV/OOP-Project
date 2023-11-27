@@ -19,7 +19,7 @@ public class AdminLogin extends JFrame {
     public AdminLogin() {
         setLayout(new GridLayout(17,4));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(700, 900);
+        setSize(500, 700);
         setVisible(true);
         //Login.setBounds(175,350,100,50);
         add(new JLabel(" "));
