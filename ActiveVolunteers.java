@@ -1,4 +1,15 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.sql.*;
+import java.util.*;
+import java.util.ArrayList;
+import javax.swing.table.*;
+
+
+
 public class ActiveVolunteers extends javax.swing.JFrame {
+    private Connection connection;
 
     /**
      * Creates new form ActiveVolunteers
@@ -30,20 +41,27 @@ public class ActiveVolunteers extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Current Volunteers");
 
+        try{
+            connection = userDataBase.connect();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Email", "Phone No."
+                "ID", "Name", "Email", "Phone No.", "Address", "Credit Points"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Remove Volunteer");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("List of users opted for volunteering:");
 
@@ -94,7 +112,25 @@ public class ActiveVolunteers extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>                        
+        loadVolunteers();
+    }// </editor-fold> 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        TableModel t = jTable1.getModel();
+        int row = jTable1.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Please select an initiative.");
+        } else {
+            String query = "DELETE from volunteers WHERE intiativeID = " + AdminMain.getSelectedInit() + " AND userID = " + (int) t.getValueAt(row,0);
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.executeUpdate();
+                loadVolunteers();
+    
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }                                
+        // TODO add your handling code here:
+    }                           
 
     /**
      * @param args the command line arguments
@@ -129,6 +165,28 @@ public class ActiveVolunteers extends javax.swing.JFrame {
                 new ActiveVolunteers().setVisible(true);
             }
         });
+    }
+    public void loadVolunteers() {
+        DefaultTableModel t = (DefaultTableModel) jTable1.getModel();
+        t.setRowCount(0); // Clear existing rows
+
+        String query = "SELECT u.ID, u.email, u.name, u.phoneNo, u.address, u.points FROM users AS u INNER JOIN volunteers AS v ON u.ID = v.userID AND v.intiativeID =" + AdminMain.getSelectedInit();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                Object[] col = new Object[6];
+                col[0] = rs.getInt("ID");
+                col[1] = rs.getString("name");
+                col[2] = rs.getString("email");
+                col[3] = rs.getString("phoneNo");
+                col[4] = rs.getString("address");
+                col[5] = rs.getInt("points");
+                
+                t.addRow(col);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
     }
 
     // Variables declaration - do not modify                     

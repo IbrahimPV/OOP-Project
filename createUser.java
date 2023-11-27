@@ -8,7 +8,7 @@ public class createUser {
     private static String uName;
 
     public static void addUser(Connection connection, user p) throws SQLException {
-        String insertSQL = "INSERT INTO users (name, email, password, phoneNo, address, day, month, year) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String insertSQL = "INSERT INTO users (name, email, password, phoneNo, address, day, month, year, points) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
             preparedStatement.setString(1, p.getName());
             preparedStatement.setString(2, p.getEmail());
@@ -18,6 +18,7 @@ public class createUser {
             preparedStatement.setString(6, p.getDay());
             preparedStatement.setString(7, p.getMonth());
             preparedStatement.setString(8, p.getYear());
+            preparedStatement.setInt(9, p.getPoints());
             preparedStatement.executeUpdate();
         }
     }

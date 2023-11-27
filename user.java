@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class user {
     private String name, password, email, phoneNumber, day, month, year, address;
-    //private String userID;
+    private int points;
 
     public user(String name, String password, String email, String phoneNumber, String address, String day, String month, String year) {
         this.name = name;
@@ -21,7 +21,14 @@ public class user {
         this.month = month;
         this.year = year;
         this.address = address;
+        this.points = 0;
         //userID = IDGenerator();
+    }
+    public int getPoints() {
+        return points;
+    }
+    public void setPoints(int p) {
+        this.points = p;
     }
 
     public String getName() {
