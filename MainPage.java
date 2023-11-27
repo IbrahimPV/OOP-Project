@@ -50,13 +50,14 @@ public class MainPage extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(500, 600));
 		setVisible(true);
         
-        titleLabel.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        titleLabel.setFont(new java.awt.Font("Segoe UI", Font.PLAIN, 28)); // NOI18N
+        titleLabel.setLocation(120, 50);
         titleLabel.setText("COP28 Login Page");
 
-        emailLabel.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        emailLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         emailLabel.setText("Email:");
 
-        passwordLabel.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        passwordLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         passwordLabel.setText("Password:");
 
         emailText.setName(""); // NOI18N
