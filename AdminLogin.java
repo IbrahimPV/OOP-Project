@@ -54,7 +54,6 @@ public class AdminLogin extends JFrame {
         class login2 implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 if(unf.getText().equals(Username) && pasf.getText().equals(Password))
                     new AdminMain();
             }
