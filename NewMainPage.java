@@ -8,11 +8,10 @@ public class NewMainPage extends JFrame {
 
     JButton adminLogin, signUp, logIn;
     JLabel title, email, pass;
-    JTextField emailInput = new JTextField();
-    JTextField passInput = new JTextField();
+    JTextField emailInput, passInput;
     Container c;
 
-    public static void main(String args) {
+    public static void main(String [] args) {
         new NewMainPage();
     }
 
@@ -26,6 +25,9 @@ public class NewMainPage extends JFrame {
 
         c = getContentPane();
         c.setLayout(null);
+
+        emailInput = new JTextField();
+        passInput = new JTextField();
 
         adminLogin = new JButton("Admin Login");
         adminLogin.setBounds(350, 20, 80, 40);
@@ -61,8 +63,8 @@ public class NewMainPage extends JFrame {
 
         signUp = new JButton("SignUp");
         signUp.setBounds(20,450,200,50);
-        toSignUp b = new toSignUp();
-        signUp.addActionListener(b);
+        //toSignUp b = new toSignUp();
+        //signUp.addActionListener(b);
         c.add(signUp);
 
         logIn = new JButton("Login");
@@ -89,14 +91,14 @@ class toAdminLogin implements ActionListener {
         new UserSignUp();
     }
 }
-/* 
+
  class toUserLogin implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         try {
         Connection connection = userDataBase.connect();
         if (emailInput.getText().isEmpty() || passInput.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please fill in all the boxes.");
-        } else if (createUser.checkLogin(connection, emailInput.getText(),passInput.getText())) {
+        } else if (createUser.checkLogin(connection, emailInput.getText(), passInput.getText())) {
             //dispose();
             UserMainM x = new UserMainM();
         } else {
@@ -111,4 +113,3 @@ class toAdminLogin implements ActionListener {
     }
 
 }
-*/
