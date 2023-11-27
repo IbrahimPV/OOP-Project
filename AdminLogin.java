@@ -11,8 +11,8 @@ public class AdminLogin extends JFrame {
     JTextField pasf = new JTextField();
     Container c;
 
-    String Username = "Admin";
-    String Password = "Admin123";
+    String Username = "admin";
+    String Password = "admin123";
     
     
     public AdminLogin() {
@@ -82,9 +82,7 @@ public class AdminLogin extends JFrame {
         class backToMainPage implements ActionListener{
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                MainPage back = new MainPage();
-                
-    
+                new MainPage();
             }
         }
 }
