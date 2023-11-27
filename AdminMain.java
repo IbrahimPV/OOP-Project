@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
+import java.util.*;
+import java.util.ArrayList;
 import javax.swing.table.*;
 
 public class AdminMain extends javax.swing.JFrame {
@@ -95,6 +97,20 @@ public class AdminMain extends javax.swing.JFrame {
         jButton4.setText("Delete");
 
         jLabel4.setText("Search:");
+
+        // Add this code in the initComponents method
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+        });
+
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField2KeyReleased(evt);
+            }
+        });
+
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,6 +237,26 @@ public class AdminMain extends javax.swing.JFrame {
     // voluntters list                                        
        new ActiveVolunteers().setVisible(true);
    }  
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {
+        filterTable(jTable1, jTextField1.getText());
+    }
+
+    private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {
+        filterTable(jTable2, jTextField2.getText());
+    }
+
+    private void filterTable(JTable table, String filterText) {
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>((DefaultTableModel) table.getModel());
+        table.setRowSorter(sorter);
+    
+        if (filterText.trim().length() == 0) {
+            sorter.setRowFilter(null);
+        } else {
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + filterText));
+        }
+    }
+
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) { 
                 TableModel t = jTable1.getModel();
