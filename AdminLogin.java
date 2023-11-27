@@ -55,7 +55,7 @@ public class AdminLogin extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(unf.getText().equals(Username) && pasf.getText().equals(Password))
-                    new AdminMain();
+                    new AdminMain().setVisible(true);
             }
 
         }
