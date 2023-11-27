@@ -189,6 +189,7 @@ public class AddInitiative extends javax.swing.JFrame {
         // TODO add your handling code here:
         // new AddInitiative().setVisible(false);
         dispose();
+        new UserMainM().setVisible(true);
     }                                        
 
     /**
