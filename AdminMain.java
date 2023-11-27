@@ -223,14 +223,14 @@ public class AdminMain extends javax.swing.JFrame {
    }  
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) { 
-                        TableModel t = jTable1.getModel();
+                TableModel t = jTable1.getModel();
                 int row = jTable1.getSelectedRow();
                 if (row == -1) {
                     JOptionPane.showMessageDialog(null, "Please select an initiative.");
                 } else {
                 String query = "UPDATE initiatives SET status = ? WHERE ID = " + t.getValueAt(row, 0);
                 try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-                    preparedStatement.setString(1, "Active");
+                    preparedStatement.setString(1, "Rejected");
                     preparedStatement.executeUpdate();
                     loadActive();
                     loadPending();
@@ -238,11 +238,13 @@ public class AdminMain extends javax.swing.JFrame {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+                }
         //reject                                          
         // TODO add your handling code here:
     }
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {       
+        dispose();                                  
         // TODO add your handling code here:
     }                                        
 
