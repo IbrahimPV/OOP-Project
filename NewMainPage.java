@@ -78,13 +78,13 @@ public class NewMainPage extends JFrame {
     }
     class toAdminLogin implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            //dispose();
+            dispose();
             new AdminLogin();
         }
     }
      class toSignUp implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            //dispose();
+            dispose();
             new UserSignUp();
         }
     }
@@ -96,7 +96,7 @@ public class NewMainPage extends JFrame {
             if (emailInput.getText().isEmpty() || passInput.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Please fill in all the boxes.");
             } else if (createUser.checkLogin(connection, emailInput.getText(), passInput.getText())) {
-                //dispose();
+                dispose();
                 UserMainM x = new UserMainM();
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid Email Or Password. Please Try Again.");
