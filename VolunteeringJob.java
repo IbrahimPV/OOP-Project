@@ -62,6 +62,11 @@ public class VolunteeringJob extends javax.swing.JFrame {
         jLabel3.setText("\"Our environment is everyone's responsibility to protect\"");
 
         jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,7 +116,12 @@ public class VolunteeringJob extends javax.swing.JFrame {
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
-    }    
+    } 
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        new UserMainM().setVisible(true);
+        dispose();
+    }
     public void load() {
         DefaultTableModel t = (DefaultTableModel) jTable1.getModel();
         t.setRowCount(0); // Clear existing rows

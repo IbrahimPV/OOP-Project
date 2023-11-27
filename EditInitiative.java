@@ -1,4 +1,11 @@
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.sql.*;
+import javax.swing.table.*;
 public class EditInitiative extends javax.swing.JFrame {
+    private Connection connection;
 
     /**
      * Creates new form EditInitiative
@@ -15,6 +22,11 @@ public class EditInitiative extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
+        try{
+            connection = userDataBase.connect();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -103,8 +115,9 @@ public class EditInitiative extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        dispose();                                         
+        new UserMainM().setVisible(true);
     }                                        
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -144,6 +157,30 @@ public class EditInitiative extends javax.swing.JFrame {
                 new EditInitiative().setVisible(true);
             }
         });
+    }
+    public void loadMyInitiatives() {
+        DefaultTableModel t = (DefaultTableModel) jTable1.getModel();
+        t.setRowCount(0); // Clear existing rows
+
+        String query = "SELECT * FROM initiatives WHERE userID = " + createUser.getSavedID();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                Object[] col = new Object[8];
+                col[0] = rs.getInt("ID");
+                col[1] = rs.getString("initiativeName");
+                col[2] = rs.getString("initiator");
+                col[3] = rs.getInt("points");
+                col[4] = rs.getString("time");
+                col[5] = rs.getString("date");
+                col[6] = rs.getString("description");
+                col[7] = rs.getString("status");
+            
+                t.addRow(col);
+            }
+            }  catch(SQLException e){
+                e.printStackTrace();
+            }
     }
 
     // Variables declaration - do not modify                     
