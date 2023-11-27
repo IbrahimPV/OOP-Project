@@ -1,4 +1,11 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.sql.*;
+import javax.swing.table.*;
+
 public class AdminMain extends javax.swing.JFrame {
+    private Connection connection;
 
     /**
      * Creates new form AdminMain
@@ -15,6 +22,11 @@ public class AdminMain extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
+        try{
+            connection = userDataBase.connect();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -178,18 +190,55 @@ public class AdminMain extends javax.swing.JFrame {
         );
 
         pack();
+        jTable1.getColumnModel().getColumn(0).setMinWidth(0);
+        jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
+        loadActive();
+        loadPending();
     }// </editor-fold>                        
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {  
+                TableModel t = jTable1.getModel();
+                int row = jTable1.getSelectedRow();
+                if (row == -1) {
+                    JOptionPane.showMessageDialog(null, "Please select an initiative.");
+                } else {
+                String query = "UPDATE initiatives SET status = ? WHERE ID = " + t.getValueAt(row, 0);
+                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                    preparedStatement.setString(1, "Active");
+                    preparedStatement.executeUpdate();
+                    loadActive();
+                    loadPending();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+        // approve                                   
         // TODO add your handling code here:
+            }
     }
 
-//    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-//        new ActiveVolunteers().setVisible(true);
-//    }           I am not sure why it doesn't work but the frame is ready
+   private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) { 
+    // voluntters list                                        
+       new ActiveVolunteers().setVisible(true);
+   }  
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) { 
+                        TableModel t = jTable1.getModel();
+                int row = jTable1.getSelectedRow();
+                if (row == -1) {
+                    JOptionPane.showMessageDialog(null, "Please select an initiative.");
+                } else {
+                String query = "UPDATE initiatives SET status = ? WHERE ID = " + t.getValueAt(row, 0);
+                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                    preparedStatement.setString(1, "Active");
+                    preparedStatement.executeUpdate();
+                    loadActive();
+                    loadPending();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+        //reject                                          
         // TODO add your handling code here:
     }
 
@@ -230,7 +279,56 @@ public class AdminMain extends javax.swing.JFrame {
                 new AdminMain().setVisible(true);
             }
         });
+
     }
+    public void loadPending() {
+        DefaultTableModel t = (DefaultTableModel) jTable1.getModel();
+        t.setRowCount(0); // Clear existing rows
+
+        String query = "SELECT * FROM initiatives WHERE status = 'Pending'";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                Object[] col = new Object[8];
+                col[0] = rs.getInt("ID");
+                col[1] = rs.getString("initiativeName");
+                col[2] = rs.getString("initiator");
+                col[3] = rs.getInt("points");
+                col[4] = rs.getString("time");
+                col[5] = rs.getString("date");
+                col[6] = rs.getString("description");
+                col[7] = rs.getString("status");
+                
+                t.addRow(col);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
+        }
+        public void loadActive() {
+            DefaultTableModel t = (DefaultTableModel) jTable2.getModel();
+            t.setRowCount(0); // Clear existing rows
+    
+            String query = "SELECT * FROM initiatives WHERE status = 'Active'";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                ResultSet rs = preparedStatement.executeQuery();
+                while (rs.next()) {
+                    Object[] col = new Object[8];
+                    col[0] = rs.getInt("ID");
+                    col[1] = rs.getString("initiativeName");
+                    col[2] = rs.getString("initiator");
+                    col[3] = rs.getInt("points");
+                    col[4] = rs.getString("time");
+                    col[5] = rs.getString("date");
+                    col[6] = rs.getString("description");
+                    col[7] = rs.getString("status");
+                    
+                    t.addRow(col);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace(); // Handle the exception appropriately
+            }
+            }
 
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;

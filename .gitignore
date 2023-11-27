@@ -32,3 +32,4 @@ MainPage$toUserLogin.class
 UserSignUp$submit.class
 bin/.project
 .project
+.vscode/launch.json
