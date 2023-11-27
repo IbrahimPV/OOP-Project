@@ -8,6 +8,11 @@ import javax.swing.table.*;
 
 public class AdminMain extends javax.swing.JFrame {
     private Connection connection;
+    private static int selectedInit;
+
+    public static int getSelectedInit(){
+        return selectedInit;
+    }
 
     /**
      * Creates new form AdminMain
@@ -95,6 +100,11 @@ public class AdminMain extends javax.swing.JFrame {
         jButton3.setText("Veiw Volunteers");
 
         jButton4.setText("Delete");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Search:");
 
@@ -115,6 +125,11 @@ public class AdminMain extends javax.swing.JFrame {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -233,8 +248,16 @@ public class AdminMain extends javax.swing.JFrame {
             }
     }
 
-   private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) { 
-    // voluntters list                                        
+   private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+    int row = jTable2.getSelectedRow();
+    if (row == -1) {
+        JOptionPane.showMessageDialog(null, "Please select an initiative.");
+    } else {
+        TableModel t = jTable2.getModel();
+        selectedInit = (int) t.getValueAt(row,0);
+        System.out.println(selectedInit); 
+    }
+                                            
        new ActiveVolunteers().setVisible(true);
    }  
 
@@ -278,6 +301,25 @@ public class AdminMain extends javax.swing.JFrame {
         //reject                                          
         // TODO add your handling code here:
     }
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {  
+        TableModel t = jTable2.getModel();
+        int row = jTable2.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Please select an initiative.");
+        } else {
+        String query = "DELETE FROM initiatives WHERE ID = " + t.getValueAt(row, 0);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.executeUpdate();
+            loadActive();
+            loadPending();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+// approve                                   
+// TODO add your handling code here:
+    }
+}
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {       
         dispose();                                  
@@ -367,6 +409,7 @@ public class AdminMain extends javax.swing.JFrame {
                 e.printStackTrace(); // Handle the exception appropriately
             }
             }
+
 
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
