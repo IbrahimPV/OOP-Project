@@ -112,9 +112,9 @@ public class AdminMain extends javax.swing.JFrame {
         });
 
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -258,7 +258,7 @@ public class AdminMain extends javax.swing.JFrame {
     }
 
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) { 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) { 
                 TableModel t = jTable1.getModel();
                 int row = jTable1.getSelectedRow();
                 if (row == -1) {
