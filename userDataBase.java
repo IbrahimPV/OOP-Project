@@ -5,9 +5,9 @@ import java.sql.SQLException;
 
 
 public class userDataBase {
-        private static String url = "jdbc:mysql://sql12.freesqldatabase.com:3306/sql12663072";
-        private static String username = "sql12663072";
-        private static String password = "hWq3Isa7QQ";
+        private static String url = "jdbc:mysql://sql12.freesqldatabase.com:3306/sql12664920";
+        private static String username = "sql12664920";
+        private static String password = "8wYid7TuxP";
     
         public static Connection connect() throws SQLException {
             try {

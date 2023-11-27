@@ -46,7 +46,7 @@ public class MainPage extends javax.swing.JFrame {
         signUpButton.addActionListener(s);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 900));
+        setPreferredSize(new java.awt.Dimension(500, 600));
 		setVisible(true);
         
         titleLabel.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
@@ -146,7 +146,7 @@ public class MainPage extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Please fill in all the boxes.");
             } else if (createUser.checkLogin(connection, emailText.getText(),passwordText.getText())) {
                 dispose();
-                UserLogin myUserLogin = new UserLogin();
+                UserMainM x = new UserMainM();
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid Email Or Password. Please Try Again.");
 
