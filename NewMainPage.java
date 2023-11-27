@@ -98,7 +98,7 @@ class toAdminLogin implements ActionListener {
         Connection connection = userDataBase.connect();
         if (emailInput.getText().isEmpty() || passInput.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please fill in all the boxes.");
-        } else if (createUser.checkLogin(connection, emailInput.getText(), passInput.getText())) {
+        } else if (createUser.checkLogin(connection, emailInput.getText, passInput.getText)) {
             //dispose();
             UserMainM x = new UserMainM();
         } else {
@@ -113,3 +113,5 @@ class toAdminLogin implements ActionListener {
     }
 
 }
+// emailInput.getText().isEmpty() || passInput.getText().isEmpty()
+//emailInput.getText(), passInput.getText()
