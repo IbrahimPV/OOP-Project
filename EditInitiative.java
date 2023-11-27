@@ -6,10 +6,12 @@ import java.sql.*;
 import javax.swing.table.*;
 public class EditInitiative extends javax.swing.JFrame {
     private Connection connection;
+    private static int selectedInit;
 
-    /**
-     * Creates new form EditInitiative
-     */
+    public static int getSelectedInit(){
+        return selectedInit;
+    }
+
     public EditInitiative() {
         initComponents();
     }
@@ -50,7 +52,7 @@ public class EditInitiative extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Initiative Title", "Credit Points", "Date", "Time", "Description", "Status"
+                "ID","Initiative Title","Initiator", "Credit Points", "Time", "Date", "Description", "Status"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -120,7 +122,15 @@ public class EditInitiative extends javax.swing.JFrame {
         new UserMainM().setVisible(true);
     }                                        
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+        int row = jTable1.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Please select an initiative.");
+        } else {
+            TableModel t = jTable1.getModel();
+            selectedInit = (int) t.getValueAt(row,0); 
+        }
+        new ActiveVolunteers2().setVisible(true);                                      
         // TODO add your handling code here:
     }                                        
 

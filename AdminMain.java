@@ -254,8 +254,7 @@ public class AdminMain extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Please select an initiative.");
     } else {
         TableModel t = jTable2.getModel();
-        selectedInit = (int) t.getValueAt(row,0);
-        System.out.println(selectedInit); 
+        selectedInit = (int) t.getValueAt(row,0); 
     }
                                             
        new ActiveVolunteers().setVisible(true);
