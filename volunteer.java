@@ -155,7 +155,7 @@ public class volunteer extends javax.swing.JFrame {
                 preparedStatement.setInt(2, (int) t.getValueAt(row,0));
                 preparedStatement.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Initiative has been volunteered for.");
-                createUser.addPoints( connection, (int) t.getValueAt(row,3));
+                // createUser.addPoints( connection, (int) t.getValueAt(row,3));
 
                 dispose();
             } catch (SQLException e) {
