@@ -24,108 +24,98 @@ public class MainPage extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    public void initComponents() {
-
-        titleLabel = new javax.swing.JLabel();
-        emailLabel = new javax.swing.JLabel();
-        passwordLabel = new javax.swing.JLabel();
-        emailText = new javax.swing.JTextField();
-        passwordText = new javax.swing.JTextField();
-        adminButton = new javax.swing.JButton();
-        loginButton = new javax.swing.JButton();
-        signUpButton = new javax.swing.JButton();
 
 
+        private void initComponents() {
+            setVisible(true);
 
-        toAdminLogin a = new toAdminLogin();
-        adminButton.addActionListener(a);
-    
-        toUserLogin u = new toUserLogin();
-        loginButton.addActionListener(u);
+            titleLabel = new javax.swing.JLabel();
+            emailLabel = new javax.swing.JLabel();
+            passwordLabel = new javax.swing.JLabel();
+            emailText = new javax.swing.JTextField();
+            adminButton = new javax.swing.JButton();
+            loginButton = new javax.swing.JButton();
+            signUpButton = new javax.swing.JButton();
+            passwordText = new javax.swing.JPasswordField();
+            jCheckBox1 = new javax.swing.JCheckBox();
 
-        toSignUp s = new toSignUp();
-        signUpButton.addActionListener(s);
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 600));
-		setVisible(true);
+            toAdminLogin a = new toAdminLogin();
+            adminButton.addActionListener(a);
         
-        titleLabel.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        titleLabel.setText("COP28 Login Page");
+            toUserLogin u = new toUserLogin();
+            loginButton.addActionListener(u);
+    
+            toSignUp s = new toSignUp();
+            signUpButton.addActionListener(s);
+    
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+            setPreferredSize(new java.awt.Dimension(450, 430));
+            setResizable(false);
+            getContentPane().setLayout(null);
+    
+            titleLabel.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+            titleLabel.setText("COP28 Login Page");
+            getContentPane().add(titleLabel);
+            titleLabel.setBounds(100, 10, 484, 110);
+    
+            emailLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+            emailLabel.setText("Email:");
+            getContentPane().add(emailLabel);
+            emailLabel.setBounds(20, 160, 110, 40);
+    
+            passwordLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+            passwordLabel.setText("Passowrd:");
+            getContentPane().add(passwordLabel);
+            passwordLabel.setBounds(10, 220, 120, 58);
+    
+            emailText.setName(""); // NOI18N
 
-        emailLabel.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        emailLabel.setText("Email:");
+            getContentPane().add(emailText);
+            emailText.setBounds(130, 170, 250, 30);
+    
+            adminButton.setText("Admin Login");
 
-        passwordLabel.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        passwordLabel.setText("Password:");
+            getContentPane().add(adminButton);
+            adminButton.setBounds(320, 20, 120, 23);
+    
+            loginButton.setText("Login");
 
-        emailText.setName(""); // NOI18N
+            getContentPane().add(loginButton);
+            loginButton.setBounds(210, 320, 170, 45);
+    
+            signUpButton.setText("Sign Up");
+  
+            getContentPane().add(signUpButton);
+            signUpButton.setBounds(40, 320, 153, 45);
+    
 
-
-        adminButton.setText("Admin Login");
-
-        loginButton.setText("Login");
- 
-        signUpButton.setText("Sign Up");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                    .addComponent(signUpButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
-                    .addComponent(emailText)
-                    .addComponent(passwordText))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(adminButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(73, 73, 73)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(emailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(emailText, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
-                        .addComponent(passwordText, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                    .addComponent(signUpButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(365, Short.MAX_VALUE))
-        );
-
-        pack();
-    }
+            getContentPane().add(passwordText);
+            passwordText.setBounds(130, 240, 250, 30);
+    
+            jCheckBox1.setText("show password");
+            jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jCheckBox1ActionPerformed(evt);
+                }
+            });
+            getContentPane().add(jCheckBox1);
+            jCheckBox1.setBounds(130, 280, 110, 20);
+    
+            pack();
+        }// </editor-fold>  
 // </editor-fold>                        
                            
 
     /**
      * @param args the command line arguments
      */
-
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        if (jCheckBox1.isSelected()){
+            passwordText.setEchoChar((char)0);
+        } else {
+            passwordText.setEchoChar('*');
+        }
+    }       
 
 	 class toAdminLogin implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
@@ -167,10 +157,11 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JTextField emailText;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JButton loginButton;
-    private javax.swing.JTextField passwordText;
+    private javax.swing.JPasswordField passwordText;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JButton signUpButton;
     private javax.swing.JLabel titleLabel;
+    private javax.swing.JCheckBox jCheckBox1;
     // End of variables declaration                   
 }
 
