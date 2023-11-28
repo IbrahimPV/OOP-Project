@@ -56,17 +56,17 @@ public class createUser {
     public static String getUName() {
         return uName;
     }
-    public static void addPoints(Connection connection, int p) {
+    // public static void addPoints(Connection connection, int p) {
 
-        String query="UPDATE 'users' set 'points' = ? WHERE ID = " + createUser.getSavedID();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1,p);
-            preparedStatement.executeUpdate();
-        } catch(SQLException e) {
-            e.printStackTrace();
-        }
+    //     String query="UPDATE 'users' set 'points' = ? WHERE ID = " + createUser.getSavedID();
+    //     try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+    //         preparedStatement.setInt(1,p);
+    //         preparedStatement.executeUpdate();
+    //     } catch(SQLException e) {
+    //         e.printStackTrace();
+    //     }
 
-    }
+    // }
     public static int displayPoints(Connection connection) {
         String query = "SELECT points from users WHERE ID =" + createUser.getSavedID();
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
