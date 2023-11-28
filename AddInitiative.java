@@ -180,24 +180,24 @@ public class AddInitiative extends javax.swing.JFrame {
             } catch(SQLException e) {
                 e.printStackTrace();
             }
-            String insertSQL = "INSERT INTO initiatives (initiativeName, initiator, points, time, date, description, status, userID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
-                preparedStatement.setString(1, jTextField1.getText());
-                preparedStatement.setString(2, createUser.getUName());
-                preparedStatement.setInt(3, Integer.parseInt(jTextField2.getText()));
-                preparedStatement.setString(4, jTextField4.getText());
-                preparedStatement.setString(5, jTextField3.getText());
-                preparedStatement.setString(6, jTextArea1.getText());
-                preparedStatement.setString(7, "Pending");
-                preparedStatement.setInt(8, createUser.getSavedID());
-                preparedStatement.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Initiavte Has Been Created");
-                dispose();
-                new MainPage().setVisible(true);
+            // String query = "INSERT INTO initiatives (initiativeName, initiator, points, time, date, description, status, userID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            // try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            //     preparedStatement.setString(1, jTextField1.getText());
+            //     preparedStatement.setString(2, createUser.getUName());
+            //     preparedStatement.setInt(3, Integer.parseInt(jTextField2.getText()));
+            //     preparedStatement.setString(4, jTextField4.getText());
+            //     preparedStatement.setString(5, jTextField3.getText());
+            //     preparedStatement.setString(6, jTextArea1.getText());
+            //     preparedStatement.setString(7, "Pending");
+            //     preparedStatement.setInt(8, createUser.getSavedID());
+            //     preparedStatement.executeUpdate();
+            //     JOptionPane.showMessageDialog(null, "Initiavte Has Been Created");
+            //     dispose();
+            //     new MainPage().setVisible(true);
 
-            } catch(SQLException e) {
-                e.printStackTrace();
-            }
+            // } catch(SQLException e) {
+            //     e.printStackTrace();
+            // }
         }
 
         
