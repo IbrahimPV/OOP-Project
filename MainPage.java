@@ -133,9 +133,9 @@ public class MainPage extends javax.swing.JFrame {
 		public void actionPerformed(ActionEvent e) {
             try {
             Connection connection = userDataBase.connect();
-            if (emailText.getText().isEmpty() || passwordText.getText().isEmpty()) {
+            if (emailText.getText().isEmpty() || passwordText.getPassword().length == 0) {
                 JOptionPane.showMessageDialog(null, "Please fill in all the boxes.");
-            } else if (createUser.checkLogin(connection, emailText.getText(),passwordText.getText())) {
+            } else if (createUser.checkLogin(connection, emailText.getText(),new String(passwordText.getPassword()))) {
                 dispose();
                 UserMainM x = new UserMainM();
             } else {

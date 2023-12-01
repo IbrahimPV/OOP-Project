@@ -44,7 +44,7 @@ public class createUser {
                 uName = rs.getString("name");
                 String Email = rs.getString("email");
                 String Password = rs.getString("password");
-                if(Email.equals(email) || Password.equals(password)) {
+                if(Email.equals(email) && Password.equals(password)) {
                     return true;
                 }
             } return false;
