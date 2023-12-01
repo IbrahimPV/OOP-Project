@@ -112,7 +112,7 @@ public class VolunteeringJob extends javax.swing.JFrame {
         jTable1.getColumnModel().getColumn(0).setMinWidth(0);
         jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
         load();
-        jTextField1.setText(Integer.toString(createUser.displayPoints(connection)));
+        jTextField1.setText(Integer.toString(createUser.getPoints(connection)));
     }// </editor-fold>                        
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
