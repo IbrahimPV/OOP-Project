@@ -72,11 +72,13 @@ public class AdminLogin extends JFrame {
         class login2 implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(unf.getText().equals(Username) && pasf.getText().equals(Password))
+                if(unf.getText().equals(Username) && pasf.getText().equals(Password)) {
                 dispose();
                 new AdminMain().setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid Email Or Password. Please Try Again.");
             }
-
+        }
         }
 
         class backToMainPage implements ActionListener{
