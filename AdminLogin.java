@@ -11,7 +11,7 @@ public class AdminLogin extends JFrame {
     Container c;
 
     String Username = "admin";
-    String Password = "admin123";
+    String Password = "admin2023";
     
     
     public AdminLogin() {
